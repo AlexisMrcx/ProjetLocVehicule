@@ -10,6 +10,7 @@ namespace ProjetLocVehicule
         private IDataLayer dataLayer;
         public bool UserConnected { get; private set; }
         public bool DateCorrect { get; private set; }
+        public string messageReservation { get; private set; }
 
 
         public Location()
@@ -47,7 +48,6 @@ namespace ProjetLocVehicule
             return "";
         }
 
-
         public List<Vehicule> SearchVehiculesDisponible(DateTime dateDebut, DateTime dateFin)
         {
             List<Vehicule> vDisponibles = dataLayer.Vehicules;
@@ -70,6 +70,18 @@ namespace ProjetLocVehicule
             }
 
             return vDisponibles;
+        }
+
+        public bool Reservation(Client clientConnecte, Vehicule vSelectionne, DateTime dateDebut, DateTime dateFin)
+        {
+            try
+            {
+                dataLayer.Reservations.Add(new Reservation(clientConnecte, vSelectionne, dateDebut, dateFin));
+                return true;
+            }catch (Exception ex)
+            {
+                return false;
+            }            
         }
     }
 }

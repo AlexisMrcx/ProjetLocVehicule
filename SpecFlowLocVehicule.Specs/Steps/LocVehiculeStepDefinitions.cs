@@ -23,6 +23,8 @@ namespace SpecFlowLocVehicule.Specs.Steps
         private DateTime _dateDebut;
         private DateTime _dateFin;
         private List<Vehicule> _vehiculesDisponibles;
+        private Vehicule vSelectionne;
+        private bool _reservationState;
 
         private ProjetLocVehicule.Location _loc;
         private Fake.FakeDataLayer _fakeDataLayer;
@@ -110,6 +112,12 @@ namespace SpecFlowLocVehicule.Specs.Steps
             _dateFin = new DateTime(annee, mois, jour);
         }
 
+        [Given(@"voiture sélectionné est ""(.*)""")]
+        public void GivenVoitureSelectionneEst(string immatriculation)
+        {
+            vSelectionne = _fakeDataLayer.Vehicules.SingleOrDefault(_ => _.Immatriculation == immatriculation);
+        }
+
         #endregion
 
 
@@ -125,6 +133,13 @@ namespace SpecFlowLocVehicule.Specs.Steps
         {
             _vehiculesDisponibles = _loc.SearchVehiculesDisponible(_dateDebut, _dateFin);
         }
+
+        [When(@"client reserve")]
+        public void WhenClientReserve()
+        {
+            _reservationState = _loc.Reservation(clientConnecte, vSelectionne, _dateDebut, _dateFin);
+        }
+
         #endregion
 
 
@@ -154,6 +169,13 @@ namespace SpecFlowLocVehicule.Specs.Steps
             _loc.DateCorrect.Should().BeTrue();
         }
 
+        [Then(@"dates ne sont pas corrects")]
+        public void ThenDatesNeSontPasCorrects()
+        {
+            _loc.DateCorrect.Should().BeFalse();
+        }
+
+
         [Then(@"les voitures disponibles sont")]
         public void ThenVoituresDisponiblesSont(Table table)
         {
@@ -166,6 +188,13 @@ namespace SpecFlowLocVehicule.Specs.Steps
 
             _vehiculesDisponibles.Should().BeEquivalentTo(vAttendue);
         }
+
+        [Then(@"reservation est créée")]
+        public void ThenReservationEstCreee()
+        {
+            _reservationState.Should().BeTrue();
+        }
+
         #endregion 
     }
 }
