@@ -116,7 +116,6 @@ namespace SpecFlowLocVehicule.Specs.Steps
             }
         }
 
-
         [Given(@"date de début est jour:(.*) mois:(.*) annee:(.*)")]
         public void GivenDateDeDebutEstJourMoisAnnee(int jour, int mois, int annee)
         {
@@ -177,7 +176,6 @@ namespace SpecFlowLocVehicule.Specs.Steps
 
             _totalFacture = _loc.CalculFacture(r, _ajustementKm);
         }
-
         #endregion
 
 
@@ -200,7 +198,6 @@ namespace SpecFlowLocVehicule.Specs.Steps
             _errorMessage.Should().Be(errorMessage);
         }             
 
-
         [Then(@"dates sont corrects")]
         public void ThenDatesSontCorrects()
         {
@@ -212,7 +209,6 @@ namespace SpecFlowLocVehicule.Specs.Steps
         {
             _loc.DateCorrect.Should().BeFalse();
         }
-
 
         [Then(@"les voitures disponibles sont")]
         public void ThenVoituresDisponiblesSont(Table table)
@@ -253,10 +249,7 @@ namespace SpecFlowLocVehicule.Specs.Steps
         {
             _totalFacture.Should().Be(prix);
         }
-
         #endregion 
-
-
 
     }
 }

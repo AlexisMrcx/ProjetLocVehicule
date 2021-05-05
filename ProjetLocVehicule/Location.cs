@@ -79,7 +79,7 @@ namespace ProjetLocVehicule
             {
                 return false;
             }
-            else if((clientConnecte.Age<21 && vSelectionne.NombreChevauxFiscaux >= 8) || (clientConnecte.Age>=21 && clientConnecte.Age<=25 && vSelectionne.NombreChevauxFiscaux>=13))
+            else if ((clientConnecte.Age < 21 && vSelectionne.NombreChevauxFiscaux >= 8) || (clientConnecte.Age >= 21 && clientConnecte.Age <= 25 && vSelectionne.NombreChevauxFiscaux >= 13))
             {
                 return false;
             }
@@ -89,6 +89,7 @@ namespace ProjetLocVehicule
                 {
                     if (r.Client == clientConnecte)
                     {
+                        //Si le client à déjà une réservation
                         return false;
                     }
                 }
@@ -98,10 +99,9 @@ namespace ProjetLocVehicule
                 return true;
             }
 
-
         }
 
-        public float CalculFacture(Reservation reservation, int ajustementKm = 0 )
+        public float CalculFacture(Reservation reservation, int ajustementKm = 0)
         {
             float total = 0;
 
@@ -111,7 +111,7 @@ namespace ProjetLocVehicule
             dataLayer.Reservations.Remove(reservation);
 
             return total;
-            
+
         }
     }
 }
