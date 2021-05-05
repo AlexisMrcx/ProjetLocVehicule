@@ -76,13 +76,46 @@ namespace SpecFlowLocVehicule.Specs.Features
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "login",
-                        "password"});
+                        "password",
+                        "date naissance",
+                        "date obtention permis",
+                        "numero permis"});
             table1.AddRow(new string[] {
                         "alexis",
-                        "sixela"});
+                        "sixela",
+                        "20-05-1999",
+                        "21-05-2017",
+                        "121556"});
             table1.AddRow(new string[] {
                         "didier",
-                        "reidid"});
+                        "reidid",
+                        "19-09-1984",
+                        "20-08-2010",
+                        "6923243"});
+            table1.AddRow(new string[] {
+                        "robin",
+                        "nibor",
+                        "06-05-2005",
+                        "",
+                        ""});
+            table1.AddRow(new string[] {
+                        "emile",
+                        "elime",
+                        "19-03-2003",
+                        "",
+                        ""});
+            table1.AddRow(new string[] {
+                        "lucas",
+                        "sacul",
+                        "16-06-2002",
+                        "17-07-2020",
+                        "46538"});
+            table1.AddRow(new string[] {
+                        "lea",
+                        "ael",
+                        "03-08-1998",
+                        "20-08-2017",
+                        "65333"});
 #line 4
  testRunner.Given("clients existants", ((string)(null)), table1, "Given ");
 #line hidden
@@ -90,42 +123,83 @@ namespace SpecFlowLocVehicule.Specs.Features
                         "marque",
                         "modele",
                         "couleur",
-                        "immatriculation"});
+                        "immatriculation",
+                        "cv fiscaux",
+                        "prix reservation",
+                        "prix au km"});
             table2.AddRow(new string[] {
                         "Renault",
                         "Clio",
                         "Grise",
-                        "AA-123-BB"});
+                        "AA-123-BB",
+                        "4",
+                        "100",
+                        "1"});
             table2.AddRow(new string[] {
                         "Peugeot",
                         "207",
                         "Grise",
-                        "CC-456-DD"});
-#line 8
+                        "CC-456-DD",
+                        "5",
+                        "150",
+                        "1.2"});
+            table2.AddRow(new string[] {
+                        "Bmw",
+                        "M3",
+                        "Noire",
+                        "EE-789-FF",
+                        "8",
+                        "300",
+                        "2.5"});
+            table2.AddRow(new string[] {
+                        "Audi",
+                        "Rs3",
+                        "Noire",
+                        "GG-369-HH",
+                        "13",
+                        "800",
+                        "5"});
+            table2.AddRow(new string[] {
+                        "Citroen",
+                        "Ds3",
+                        "Blanche",
+                        "II-258-JJ",
+                        "6",
+                        "200",
+                        "1.5"});
+#line 12
  testRunner.Given("voitures existantes", ((string)(null)), table2, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "immatricualtion",
                         "nom client",
                         "date debut",
-                        "date fin"});
+                        "date fin",
+                        "estimation"});
             table3.AddRow(new string[] {
                         "CC-456-DD",
                         "didier",
                         "02-01-2022",
-                        "10-01-2022"});
-#line 12
+                        "10-01-2022",
+                        "1000"});
+            table3.AddRow(new string[] {
+                        "II-258-JJ",
+                        "lea",
+                        "02-03-2021",
+                        "15-03-2021",
+                        "800"});
+#line 19
  testRunner.Given("reservations existantes", ((string)(null)), table3, "Given ");
 #line hidden
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Connexion du client avec login non reconnue", SourceLine=16)]
+        [TechTalk.SpecRun.ScenarioAttribute("Connexion du client avec login non reconnue", SourceLine=24)]
         public virtual void ConnexionDuClientAvecLoginNonReconnue()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Connexion du client avec login non reconnue", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 17
+#line 25
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -148,32 +222,32 @@ this.ScenarioInitialize(scenarioInfo);
 #line 3
 this.FeatureBackground();
 #line hidden
-#line 18
+#line 26
  testRunner.Given("login est \"Nalexis\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 19
+#line 27
  testRunner.And("password est \"Nsixela\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 20
+#line 28
  testRunner.When("essaie de se connecter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 21
+#line 29
  testRunner.Then("connexion est refusé", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 22
+#line 30
  testRunner.And("le message d\'erreur est \"Login non reconnue\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Connexion du client avec login reconnue", SourceLine=23)]
+        [TechTalk.SpecRun.ScenarioAttribute("Connexion du client avec login reconnue", SourceLine=31)]
         public virtual void ConnexionDuClientAvecLoginReconnue()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Connexion du client avec login reconnue", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 24
+#line 32
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -196,29 +270,29 @@ this.ScenarioInitialize(scenarioInfo);
 #line 3
 this.FeatureBackground();
 #line hidden
-#line 25
+#line 33
  testRunner.Given("login est \"alexis\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 26
+#line 34
  testRunner.And("password est \"sixela\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 27
+#line 35
  testRunner.When("essaie de se connecter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 28
+#line 36
  testRunner.Then("connexion est réussie", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Connexion du client avec login reconnue et password non reconnue", SourceLine=29)]
+        [TechTalk.SpecRun.ScenarioAttribute("Connexion du client avec login reconnue et password non reconnue", SourceLine=37)]
         public virtual void ConnexionDuClientAvecLoginReconnueEtPasswordNonReconnue()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Connexion du client avec login reconnue et password non reconnue", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 30
+#line 38
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -241,32 +315,32 @@ this.ScenarioInitialize(scenarioInfo);
 #line 3
 this.FeatureBackground();
 #line hidden
-#line 31
+#line 39
  testRunner.Given("login est \"alexis\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 32
+#line 40
  testRunner.And("password est \"sila\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 33
+#line 41
  testRunner.When("essaie de se connecter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 34
+#line 42
  testRunner.Then("connexion est refusé", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 35
+#line 43
  testRunner.And("le message d\'erreur est \"Password incorrect\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Client rentre les dates qu\'ils souhaitent réserver", SourceLine=38)]
+        [TechTalk.SpecRun.ScenarioAttribute("Client rentre les dates qu\'ils souhaitent réserver", SourceLine=46)]
         public virtual void ClientRentreLesDatesQuilsSouhaitentReserver()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Client rentre les dates qu\'ils souhaitent réserver", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 39
+#line 47
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -295,19 +369,19 @@ this.FeatureBackground();
                 table4.AddRow(new string[] {
                             "alexis",
                             "sixela"});
-#line 40
+#line 48
  testRunner.Given("client connecté est", ((string)(null)), table4, "Given ");
 #line hidden
-#line 43
+#line 51
  testRunner.And("date de début est jour:4 mois:5 annee:2022", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 44
+#line 52
  testRunner.And("date de fin est jour:6 mois:5 annee:2022", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 45
+#line 53
  testRunner.When("valide son choix", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 46
+#line 54
  testRunner.Then("dates sont corrects", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
                 TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
@@ -325,7 +399,22 @@ this.FeatureBackground();
                             "207",
                             "Grise",
                             "CC-456-DD"});
-#line 47
+                table5.AddRow(new string[] {
+                            "Bmw",
+                            "M3",
+                            "Noire",
+                            "EE-789-FF"});
+                table5.AddRow(new string[] {
+                            "Audi",
+                            "Rs3",
+                            "Noire",
+                            "GG-369-HH"});
+                table5.AddRow(new string[] {
+                            "Citroen",
+                            "Ds3",
+                            "Blanche",
+                            "II-258-JJ"});
+#line 55
  testRunner.And("les voitures disponibles sont", ((string)(null)), table5, "And ");
 #line hidden
             }
@@ -333,14 +422,14 @@ this.FeatureBackground();
         }
         
         [TechTalk.SpecRun.ScenarioAttribute("Client rentre les dates qu\'ils souhaitent réserver mais elles ne sont pas correct" +
-            "s", SourceLine=51)]
+            "s", SourceLine=62)]
         public virtual void ClientRentreLesDatesQuilsSouhaitentReserverMaisEllesNeSontPasCorrects()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Client rentre les dates qu\'ils souhaitent réserver mais elles ne sont pas correct" +
                     "s", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 52
+#line 63
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -369,19 +458,19 @@ this.FeatureBackground();
                 table6.AddRow(new string[] {
                             "alexis",
                             "sixela"});
-#line 53
+#line 64
  testRunner.Given("client connecté est", ((string)(null)), table6, "Given ");
 #line hidden
-#line 56
+#line 67
  testRunner.And("date de début est jour:4 mois:5 annee:2022", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 57
+#line 68
  testRunner.And("date de fin est jour:1 mois:5 annee:2022", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 58
+#line 69
  testRunner.When("valide son choix", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 59
+#line 70
  testRunner.Then("dates ne sont pas corrects", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -389,14 +478,14 @@ this.FeatureBackground();
         }
         
         [TechTalk.SpecRun.ScenarioAttribute("Client rentre les dates qu\'ils souhaitent réserver et un véhicule n\'est pas dispo" +
-            "nible", SourceLine=60)]
+            "nible", SourceLine=71)]
         public virtual void ClientRentreLesDatesQuilsSouhaitentReserverEtUnVehiculeNestPasDisponible()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Client rentre les dates qu\'ils souhaitent réserver et un véhicule n\'est pas dispo" +
                     "nible", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 61
+#line 72
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -425,19 +514,19 @@ this.FeatureBackground();
                 table7.AddRow(new string[] {
                             "alexis",
                             "sixela"});
-#line 62
+#line 73
  testRunner.Given("client connecté est", ((string)(null)), table7, "Given ");
 #line hidden
-#line 65
+#line 76
  testRunner.And("date de début est jour:3 mois:1 annee:2022", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 66
+#line 77
  testRunner.And("date de fin est jour:11 mois:1 annee:2022", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 67
+#line 78
  testRunner.When("valide son choix", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 68
+#line 79
  testRunner.Then("dates sont corrects", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
                 TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
@@ -450,20 +539,35 @@ this.FeatureBackground();
                             "Clio",
                             "Grise",
                             "AA-123-BB"});
-#line 69
+                table8.AddRow(new string[] {
+                            "Bmw",
+                            "M3",
+                            "Noire",
+                            "EE-789-FF"});
+                table8.AddRow(new string[] {
+                            "Audi",
+                            "Rs3",
+                            "Noire",
+                            "GG-369-HH"});
+                table8.AddRow(new string[] {
+                            "Citroen",
+                            "Ds3",
+                            "Blanche",
+                            "II-258-JJ"});
+#line 80
  testRunner.And("les voitures disponibles sont", ((string)(null)), table8, "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [TechTalk.SpecRun.ScenarioAttribute("Client choisis de réserver une voiture disponible", SourceLine=74)]
+        [TechTalk.SpecRun.ScenarioAttribute("Client choisis de réserver une voiture disponible", SourceLine=88)]
         public virtual void ClientChoisisDeReserverUneVoitureDisponible()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Client choisis de réserver une voiture disponible", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 75
+#line 89
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -492,23 +596,591 @@ this.FeatureBackground();
                 table9.AddRow(new string[] {
                             "alexis",
                             "sixela"});
-#line 76
+#line 90
  testRunner.Given("client connecté est", ((string)(null)), table9, "Given ");
 #line hidden
-#line 79
+#line 93
  testRunner.And("date de début est jour:3 mois:1 annee:2022", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 80
+#line 94
  testRunner.And("date de fin est jour:11 mois:1 annee:2022", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 81
+#line 95
  testRunner.And("voiture sélectionné est \"AA-123-BB\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 82
+#line 96
  testRunner.When("client reserve", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 83
+#line 97
  testRunner.Then("reservation est créée", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Client choisis de réserver une voiture disponible mais à déjà une réservation", SourceLine=98)]
+        public virtual void ClientChoisisDeReserverUneVoitureDisponibleMaisADejaUneReservation()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Client choisis de réserver une voiture disponible mais à déjà une réservation", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 99
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 3
+this.FeatureBackground();
+#line hidden
+                TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+                            "login",
+                            "password"});
+                table10.AddRow(new string[] {
+                            "didier",
+                            "reidid"});
+#line 100
+ testRunner.Given("client connecté est", ((string)(null)), table10, "Given ");
+#line hidden
+#line 103
+ testRunner.And("date de début est jour:3 mois:1 annee:2022", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 104
+ testRunner.And("date de fin est jour:11 mois:1 annee:2022", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 105
+ testRunner.And("voiture sélectionné est \"AA-123-BB\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 106
+ testRunner.When("client reserve", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 107
+ testRunner.Then("reservation n\'est pas créée", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Client choisis de réserver une voiture disponible et n\'est pas majeur", SourceLine=108)]
+        public virtual void ClientChoisisDeReserverUneVoitureDisponibleEtNestPasMajeur()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Client choisis de réserver une voiture disponible et n\'est pas majeur", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 109
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 3
+this.FeatureBackground();
+#line hidden
+                TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+                            "login",
+                            "password"});
+                table11.AddRow(new string[] {
+                            "robin",
+                            "nibor"});
+#line 110
+ testRunner.Given("client connecté est", ((string)(null)), table11, "Given ");
+#line hidden
+#line 113
+ testRunner.And("date de début est jour:3 mois:1 annee:2022", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 114
+ testRunner.And("date de fin est jour:11 mois:1 annee:2022", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 115
+ testRunner.And("voiture sélectionné est \"AA-123-BB\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 116
+ testRunner.When("client reserve", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 117
+ testRunner.Then("reservation n\'est pas créée", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Client choisis de réserver une voiture disponible et n\'est pas majeur et n\'a pas " +
+            "le permis", SourceLine=118)]
+        public virtual void ClientChoisisDeReserverUneVoitureDisponibleEtNestPasMajeurEtNaPasLePermis()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Client choisis de réserver une voiture disponible et n\'est pas majeur et n\'a pas " +
+                    "le permis", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 119
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 3
+this.FeatureBackground();
+#line hidden
+                TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+                            "login",
+                            "password"});
+                table12.AddRow(new string[] {
+                            "robin",
+                            "nibor"});
+#line 120
+ testRunner.Given("client connecté est", ((string)(null)), table12, "Given ");
+#line hidden
+#line 123
+ testRunner.And("date de début est jour:3 mois:1 annee:2022", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 124
+ testRunner.And("date de fin est jour:11 mois:1 annee:2022", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 125
+ testRunner.And("voiture sélectionné est \"AA-123-BB\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 126
+ testRunner.When("client reserve", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 127
+ testRunner.Then("reservation n\'est pas créée", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Client choisis de réserver une voiture disponible et n\'a pas le permis", SourceLine=128)]
+        public virtual void ClientChoisisDeReserverUneVoitureDisponibleEtNaPasLePermis()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Client choisis de réserver une voiture disponible et n\'a pas le permis", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 129
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 3
+this.FeatureBackground();
+#line hidden
+                TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
+                            "login",
+                            "password"});
+                table13.AddRow(new string[] {
+                            "emile",
+                            "elime"});
+#line 130
+ testRunner.Given("client connecté est", ((string)(null)), table13, "Given ");
+#line hidden
+#line 133
+ testRunner.And("date de début est jour:3 mois:1 annee:2022", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 134
+ testRunner.And("date de fin est jour:11 mois:1 annee:2022", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 135
+ testRunner.And("voiture sélectionné est \"AA-123-BB\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 136
+ testRunner.When("client reserve", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 137
+ testRunner.Then("reservation n\'est pas créée", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Client choisis de réserver une voiture de 8 chevaux fiscaux et a moins de 21 ans", SourceLine=138)]
+        public virtual void ClientChoisisDeReserverUneVoitureDe8ChevauxFiscauxEtAMoinsDe21Ans()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Client choisis de réserver une voiture de 8 chevaux fiscaux et a moins de 21 ans", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 139
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 3
+this.FeatureBackground();
+#line hidden
+                TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
+                            "login",
+                            "password"});
+                table14.AddRow(new string[] {
+                            "lucas",
+                            "sacul"});
+#line 140
+ testRunner.Given("client connecté est", ((string)(null)), table14, "Given ");
+#line hidden
+#line 143
+ testRunner.And("date de début est jour:3 mois:1 annee:2022", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 144
+ testRunner.And("date de fin est jour:11 mois:1 annee:2022", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 145
+ testRunner.And("voiture sélectionné est \"EE-789-FF\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 146
+ testRunner.When("client reserve", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 147
+ testRunner.Then("reservation n\'est pas créée", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Client choisis de réserver une voiture de 13 chevaux fiscaux et a entre 21 et 25 " +
+            "ans", SourceLine=148)]
+        public virtual void ClientChoisisDeReserverUneVoitureDe13ChevauxFiscauxEtAEntre21Et25Ans()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Client choisis de réserver une voiture de 13 chevaux fiscaux et a entre 21 et 25 " +
+                    "ans", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 149
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 3
+this.FeatureBackground();
+#line hidden
+                TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
+                            "login",
+                            "password"});
+                table15.AddRow(new string[] {
+                            "alexis",
+                            "sixela"});
+#line 150
+ testRunner.Given("client connecté est", ((string)(null)), table15, "Given ");
+#line hidden
+#line 153
+ testRunner.And("date de début est jour:3 mois:1 annee:2022", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 154
+ testRunner.And("date de fin est jour:11 mois:1 annee:2022", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 155
+ testRunner.And("voiture sélectionné est \"GG-369-HH\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 156
+ testRunner.When("client reserve", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 157
+ testRunner.Then("reservation n\'est pas créée", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Client choisis de réserver une voiture disponible pour 500km", SourceLine=160)]
+        public virtual void ClientChoisisDeReserverUneVoitureDisponiblePour500Km()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Client choisis de réserver une voiture disponible pour 500km", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 161
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 3
+this.FeatureBackground();
+#line hidden
+                TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
+                            "login",
+                            "password"});
+                table16.AddRow(new string[] {
+                            "alexis",
+                            "sixela"});
+#line 162
+ testRunner.Given("client connecté est", ((string)(null)), table16, "Given ");
+#line hidden
+#line 165
+ testRunner.And("date de début est jour:3 mois:1 annee:2022", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 166
+ testRunner.And("date de fin est jour:11 mois:1 annee:2022", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 167
+ testRunner.And("voiture sélectionné est \"AA-123-BB\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 168
+ testRunner.And("pour une estimation de 500 km", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 169
+ testRunner.When("client reserve", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 170
+ testRunner.Then("reservation est créée", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 171
+ testRunner.And("reservation de \"alexis\" a une estimation de 500 km", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Client ramène la voiture qu\'il a loué", SourceLine=172)]
+        public virtual void ClientRameneLaVoitureQuilALoue()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Client ramène la voiture qu\'il a loué", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 173
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 3
+this.FeatureBackground();
+#line hidden
+                TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
+                            "login",
+                            "password"});
+                table17.AddRow(new string[] {
+                            "lea",
+                            "ael"});
+#line 174
+ testRunner.Given("client connecté est", ((string)(null)), table17, "Given ");
+#line hidden
+#line 177
+ testRunner.And("voiture sélectionné est \"II-258-JJ\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 178
+ testRunner.When("client ramène véhicule", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 179
+ testRunner.Then("la facture a un total de 1400 €", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Client ramène la voiture qu\'il a loué avec un réajustement négatif", SourceLine=180)]
+        public virtual void ClientRameneLaVoitureQuilALoueAvecUnReajustementNegatif()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Client ramène la voiture qu\'il a loué avec un réajustement négatif", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 181
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 3
+this.FeatureBackground();
+#line hidden
+                TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
+                            "login",
+                            "password"});
+                table18.AddRow(new string[] {
+                            "lea",
+                            "ael"});
+#line 182
+ testRunner.Given("client connecté est", ((string)(null)), table18, "Given ");
+#line hidden
+#line 185
+ testRunner.And("voiture sélectionné est \"II-258-JJ\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 186
+ testRunner.And("client a fait -200 km de difference avec l\'estimation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 187
+ testRunner.When("client ramène véhicule", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 188
+ testRunner.Then("la facture a un total de 1100 €", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [TechTalk.SpecRun.ScenarioAttribute("Client ramène la voiture qu\'il a loué avec un réajustement positif", SourceLine=189)]
+        public virtual void ClientRameneLaVoitureQuilALoueAvecUnReajustementPositif()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Client ramène la voiture qu\'il a loué avec un réajustement positif", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 190
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 3
+this.FeatureBackground();
+#line hidden
+                TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
+                            "login",
+                            "password"});
+                table19.AddRow(new string[] {
+                            "lea",
+                            "ael"});
+#line 191
+ testRunner.Given("client connecté est", ((string)(null)), table19, "Given ");
+#line hidden
+#line 194
+ testRunner.And("voiture sélectionné est \"II-258-JJ\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 195
+ testRunner.And("client a fait 200 km de difference avec l\'estimation", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 196
+ testRunner.When("client ramène véhicule", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 197
+ testRunner.Then("la facture a un total de 1700 €", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

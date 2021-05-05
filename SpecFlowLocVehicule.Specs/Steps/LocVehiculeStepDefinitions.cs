@@ -25,6 +25,9 @@ namespace SpecFlowLocVehicule.Specs.Steps
         private List<Vehicule> _vehiculesDisponibles;
         private Vehicule vSelectionne;
         private bool _reservationState;
+        private int _estimationKm;
+        private float _totalFacture;
+        private int _ajustementKm;
 
         private ProjetLocVehicule.Location _loc;
         private Fake.FakeDataLayer _fakeDataLayer;
@@ -42,7 +45,20 @@ namespace SpecFlowLocVehicule.Specs.Steps
         {
             foreach(TableRow row in table.Rows)
             {
-                _fakeDataLayer.Clients.Add(new Client(row[0], row[1]));
+                DateTime dateNaissance= new DateTime(int.Parse(row[2].Substring(6)),
+                    int.Parse(row[2].Substring(3, 2)),
+                    int.Parse(row[2].Substring(0, 2)));
+
+                //Valeur 0 si il n'a pas le permis
+                DateTime dateObtentionPermis = new DateTime(1,1,1);
+                if (row[3].Length > 0)
+                {
+                    dateObtentionPermis = new DateTime(int.Parse(row[2].Substring(6)),
+                    int.Parse(row[2].Substring(3, 2)),
+                    int.Parse(row[2].Substring(0, 2)));
+                }                
+
+                _fakeDataLayer.Clients.Add(new Client(row[0], row[1], dateNaissance,dateObtentionPermis, row[4]));
             }
         }
 
@@ -51,7 +67,7 @@ namespace SpecFlowLocVehicule.Specs.Steps
         {
             foreach (TableRow row in table.Rows)
             {
-                _fakeDataLayer.Vehicules.Add(new Vehicule(row[0], row[1], row[2], row[3]));
+                _fakeDataLayer.Vehicules.Add(new Vehicule(row[0], row[1], row[2], row[3], int.Parse(row[4]),float.Parse(row[5]),float.Parse(row[6])));
             }
         }
 
@@ -61,6 +77,7 @@ namespace SpecFlowLocVehicule.Specs.Steps
             Client c;
             Vehicule v;
             DateTime dd, df;
+            int estimation;
 
             foreach(TableRow row in table.Rows)
             {
@@ -68,12 +85,12 @@ namespace SpecFlowLocVehicule.Specs.Steps
                 c =_fakeDataLayer.Clients.SingleOrDefault(_ => _.Login == row[1]);
                 dd = new DateTime(int.Parse( row[2].Substring(6)), int.Parse(row[2].Substring(3,2)), int.Parse(row[2].Substring(0, 2)));
                 df = new DateTime(int.Parse(row[3].Substring(6)), int.Parse(row[3].Substring(3,2)), int.Parse(row[3].Substring(0, 2)));
+                estimation = int.Parse(row[4]);
 
-                _fakeDataLayer.Reservations.Add(new Reservation(c, v, dd, df));
+                _fakeDataLayer.Reservations.Add(new Reservation(c, v, dd, df, estimation));
             }
             
         }
-
         #endregion
 
 
@@ -95,7 +112,7 @@ namespace SpecFlowLocVehicule.Specs.Steps
         {
             foreach (TableRow row in table.Rows)
             {
-                clientConnecte = new Client(row[0], row[1]);
+                clientConnecte = _fakeDataLayer.Clients.SingleOrDefault(_ => _.Login == row[0] && _.Password == row[1]);
             }
         }
 
@@ -118,6 +135,18 @@ namespace SpecFlowLocVehicule.Specs.Steps
             vSelectionne = _fakeDataLayer.Vehicules.SingleOrDefault(_ => _.Immatriculation == immatriculation);
         }
 
+        [Given(@"pour une estimation de (.*) km")]
+        public void GivenPourUneEstimationDeKm(int km)
+        {
+            _estimationKm = km;
+        }
+
+        [Given(@"client a fait (.*) km de difference avec l'estimation")]
+        public void GivenClientAFaitKmDeLEstimation(int ajustement)
+        {
+            _ajustementKm = ajustement;
+        }
+
         #endregion
 
 
@@ -137,7 +166,16 @@ namespace SpecFlowLocVehicule.Specs.Steps
         [When(@"client reserve")]
         public void WhenClientReserve()
         {
-            _reservationState = _loc.Reservation(clientConnecte, vSelectionne, _dateDebut, _dateFin);
+            _reservationState = _loc.CreateReservation(clientConnecte, vSelectionne, _dateDebut, _dateFin,_estimationKm);
+        }
+
+        [When(@"client ramène véhicule")]
+        public void WhenClientRameneVehicule()
+        {
+            Reservation r = _fakeDataLayer.Reservations.SingleOrDefault(_ => _.Client.Login == clientConnecte.Login &&
+            _.Vehicule.Immatriculation == vSelectionne.Immatriculation);
+
+            _totalFacture = _loc.CalculFacture(r, _ajustementKm);
         }
 
         #endregion
@@ -183,7 +221,8 @@ namespace SpecFlowLocVehicule.Specs.Steps
 
             foreach (TableRow row in table.Rows)
             {
-                vAttendue.Add(new Vehicule(row[0], row[1], row[2], row[3]));
+                Vehicule v = _fakeDataLayer.Vehicules.SingleOrDefault(_ => _.Immatriculation == row[3]);
+                vAttendue.Add(v); 
             }
 
             _vehiculesDisponibles.Should().BeEquivalentTo(vAttendue);
@@ -195,6 +234,29 @@ namespace SpecFlowLocVehicule.Specs.Steps
             _reservationState.Should().BeTrue();
         }
 
+        [Then(@"reservation n'est pas créée")]
+        public void ThenReservationNEstPasCreee()
+        {
+            _reservationState.Should().BeFalse();
+        }
+
+        [Then(@"reservation de ""(.*)"" a une estimation de (.*) km")]
+        public void ThenReservationDeAUneEstimationDeKm(string nomReservation, int km)
+        {
+            Reservation r = _fakeDataLayer.Reservations.SingleOrDefault(_ => _.Client.Login == nomReservation);
+
+            _estimationKm.Should().Be(km);
+        }
+
+        [Then(@"la facture a un total de (.*) €")]
+        public void ThenLaFactureAUnTotalDe(int prix)
+        {
+            _totalFacture.Should().Be(prix);
+        }
+
         #endregion 
+
+
+
     }
 }
