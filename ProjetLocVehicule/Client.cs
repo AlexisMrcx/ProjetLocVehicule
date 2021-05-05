@@ -4,7 +4,7 @@ namespace ProjetLocVehicule
 {
     public class Client
     {
-        //Remplace le nom et prénom
+        // Remplace le nom et prénom
         public string Login { get; }
         public string Password { get; }
         // --------------------------------
